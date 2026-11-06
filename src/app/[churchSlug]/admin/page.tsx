@@ -19,6 +19,7 @@ import { DepartmentsManager } from "@/components/admin/departments-manager";
 import { CampusesManager } from "@/components/admin/campuses-manager";
 import { InviteLink } from "@/components/invite-link";
 import { DailyVerseSettings } from "@/components/admin/daily-verse-settings";
+import { InchurchIntegration } from "@/components/admin/inchurch-integration";
 
 export default async function AdminPage({
   params,
@@ -158,6 +159,8 @@ export default async function AdminPage({
           />
         </CardContent>
       </Card>
+
+      {isAdmin && <InchurchIntegration churchId={cid} />}
 
       {isAdmin && inviteCode && (
         <Card>

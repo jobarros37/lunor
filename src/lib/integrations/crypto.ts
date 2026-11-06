@@ -1,3 +1,5 @@
+import { serverEnv } from "@/lib/env";
+
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
@@ -22,7 +24,7 @@ function base64UrlToBytes(value: string): Uint8Array<ArrayBuffer> {
 }
 
 async function encryptionKey(): Promise<CryptoKey> {
-  const configured = process.env.INTEGRATIONS_ENCRYPTION_KEY;
+  const configured = serverEnv("INTEGRATIONS_ENCRYPTION_KEY");
   if (!configured) {
     throw new Error("INTEGRATIONS_ENCRYPTION_KEY_NOT_CONFIGURED");
   }
